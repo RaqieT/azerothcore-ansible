@@ -69,6 +69,7 @@
   become: true
 
 - name: Allow using MySQL without typing in passwords
+  become: true
   template:
     src: "sql/dot.my.cnf"
     dest: "/home/{{ azerothcore_user }}/.my.cnf"
@@ -79,6 +80,7 @@
 #####################
 
 - name: Create base folder
+  become: true
   file:
     path: "/home/{{ azerothcore_user }}/{{ azerothcore_folder }}"
     mode: "0755"
@@ -87,6 +89,7 @@
     group: "{{ azerothcore_user }}"
 
 - name: Check if the client folder exists
+  become: true
   stat:
     path: "/home/{{ azerothcore_user }}/{{ azerothcore_folder }}/{{ azerothcore_wow_client }}"
   register: client_folder
